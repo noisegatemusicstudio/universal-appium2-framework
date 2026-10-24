@@ -1,0 +1,8 @@
+node_modules/
+.env
+apps/*
+!apps/.gitkeep
+allure-results/
+allure-report/
+*.log
+.DS_Store
