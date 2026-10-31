@@ -12,9 +12,11 @@
     "appium:drivers:android": "appium driver install uiautomator2",
     "appium:drivers:ios": "appium driver install xcuitest",
     "typecheck": "tsc --noEmit",
+    "preflight:mobile": "tsx scripts/mobile-preflight.ts",
+    "test:preflight": "tsx --test tests/preflight/*.test.ts",
     "lint": "eslint .",
-    "format": "prettier --write \"src/**/*.ts\" \"features/**/*.ts\" \"*.ts\" \"*.json\" \".github/workflows/*.yml\" \".github/copilot-instructions.md\" \"README.md\"",
-    "format:check": "prettier --check \"src/**/*.ts\" \"features/**/*.ts\" \"*.ts\" \"*.json\" \".github/workflows/*.yml\" \".github/copilot-instructions.md\" \"README.md\""
+    "format": "prettier --write \"src/**/*.ts\" \"scripts/**/*.ts\" \"tests/**/*.ts\" \"docs/**/*.md\" \"features/**/*.ts\" \"*.ts\" \"*.json\" \".github/workflows/*.yml\" \".github/copilot-instructions.md\" \"README.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"scripts/**/*.ts\" \"tests/**/*.ts\" \"docs/**/*.md\" \"features/**/*.ts\" \"*.ts\" \"*.json\" \".github/workflows/*.yml\" \".github/copilot-instructions.md\" \"README.md\""
   },
   "overrides": {
     "body-parser": "2.4.0",
