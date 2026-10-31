@@ -177,10 +177,22 @@ test("S03/S06 Given actual local dependency metadata, When missing, malformed, o
   }
 });
 
+test("S04 Given colon-containing local names, When checked, Then do not misclassify them as remote URLs", async () => {
+  for (const app of ["build:1.apk", "release.v2:final.apk"]) {
+    const report = await run(args("ci-run:42", "android", app));
+    assert.equal(report.exitCode, 0);
+    assert.equal(code(report, "app-path"), "APP_PATH_VALID");
+  }
+});
+
 test("S04 Given remote, outside-root or unsupported paths, When checked, Then reject before filesystem access", async () => {
   const cases: [string[], string][] = [
     [args(root, "android", "https://example.invalid/secret.apk"), "APP_REMOTE"],
     [args("https://example.invalid/root"), "APP_REMOTE"],
+    [args(root, "android", "custom+scheme://server/app.apk"), "APP_REMOTE"],
+    [args(root, "android", "file:sample.apk"), "APP_REMOTE"],
+    [args(root, "android", "https:sample.apk"), "APP_REMOTE"],
+    [args(root, "android", "\\\\server\\share\\app.apk"), "APP_REMOTE"],
     [args(root, "android", "//server/share/app.apk"), "APP_REMOTE"],
     [args(root, "android", "../outside.apk"), "APP_OUTSIDE_ROOT"],
     [args(root, "android", `${root}-sibling/sample.apk`), "APP_OUTSIDE_ROOT"],

@@ -36,7 +36,9 @@ const packages = ["appium", "@wdio/cli", "typescript", "tsx"] as const;
 const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 const remote = (path: string) =>
-  /^(?:[a-z][a-z0-9+.-]*:|[/\\]{2})/i.test(path) && !/^[a-z]:[/\\]/i.test(path);
+  /^(?:[a-z][a-z0-9+.-]*:\/\/|(?:https?|ftp|file|smb|data):|[/\\]{2})/i.test(
+    path,
+  ) && !/^[a-z]:[/\\]/i.test(path);
 const contained = (root: string, path: string) => {
   const child = relative(root, path);
   return (

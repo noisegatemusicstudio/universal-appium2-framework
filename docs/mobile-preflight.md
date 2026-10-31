@@ -27,7 +27,9 @@ The caller is responsible for selecting an owned root; filesystem permissions do
 not establish organizational ownership.
 
 The root is resolved against the current directory. Both lexical and canonical
-containment must hold strictly inside the explicit root. Remote URLs, network
+containment must hold strictly inside the explicit root. Ordinary colon-containing
+local names are accepted; `scheme://` prefixes and reserved `http:`, `https:`,
+`ftp:`, `file:`, `smb:` and `data:` URI prefixes are rejected. Remote URLs, network
 share paths, symlink escapes and missing paths fail. Android `.apk` must be a regular
 file; iOS simulator `.app` must be a directory. Internal symlinks are allowed when
 their canonical target stays inside the canonical root. Only `stat` and `realpath`
