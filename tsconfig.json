@@ -10,5 +10,11 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node", "@wdio/globals/types", "@wdio/cucumber-framework"]
   },
-  "include": ["wdio*.conf.ts", "features/**/*.ts", "src/**/*.ts"]
+  "include": [
+    "wdio*.conf.ts",
+    "features/**/*.ts",
+    "src/**/*.ts",
+    "scripts/**/*.ts",
+    "tests/**/*.ts"
+  ]
 }

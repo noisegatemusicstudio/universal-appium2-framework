@@ -16,6 +16,9 @@ Pinned npm overrides keep Appium's transitive `sharp` and `shell-quote` dependen
 
 ## Getting started
 
+For read-only setup diagnostics, use the [offline mobile preflight](docs/mobile-preflight.md).
+It never starts Appium or contacts a device; a successful result is not mobile readiness.
+
 1. Install Node.js and dependencies:
 
    ```sh
@@ -79,6 +82,7 @@ The included smoke scenario checks that Appium can retrieve a non-empty native v
 npm run typecheck
 npm run lint
 npm run format:check
+npm run test:preflight
 ```
 
 GitHub Actions runs these checks for pushes and pull requests. Mobile E2E execution is platform- and app-dependent; add the app build or secure app download step for your product before wiring the test commands into CI.
